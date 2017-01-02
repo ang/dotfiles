@@ -26,8 +26,17 @@ brew install zsh
 ZSH_SHELL="$(grep zsh /etc/shells -m 1)"
 chsh -s $ZSH_SHELL
 
+# Install neovim
+brew tap neovim/neovim
+brew install neovim/neovim/neovim
+# Install vim-plug, vim plugin manager
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 # TODO Backup files before symlinking, you can't symlink files if they already
 # exist.
-
-# link bash profile and bashrc
-ln -s "$DOTFILES_DIR"/zsh/.zshrc .zshrc
+# Symlink configuration files
+ln -s "$DOTFILES_DIR"/zsh/.zshrc ~/.zshrc
+ln -s "$DOTFILES_DIR"/neovim/init.vim ~/.config/nvim/init.vim
+mkdir -p ~/.config/nvim/autoload/
+ln -s "$DOTFILES_DIR"/neovim/autoload/* ~/.config/nvim/autoload/

@@ -2,12 +2,18 @@
 
 My personal dotfiles.
 
+## Installation
+To install clone the repository and run:
+```sh
+$ bash install.sh
+```
+
 ## Currently set up
   - Install script
   - Zsh
+  - Neovim
 
 ## To Implement
-  - Nvim
   - Tmux
   - Git configuration
   - Ag
