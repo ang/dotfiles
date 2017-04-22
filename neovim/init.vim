@@ -18,8 +18,11 @@ call plug#begin('~/.config/nvim/plugins')
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'  " Fuzzy file finder
 Plug 'https://github.com/tpope/vim-fugitive'  " Git wrapper
 
+" TODO do something special to auto load this stuff
+Plug 'https://github.com/jelera/vim-javascript-syntax', { 'for': 'javascript' }
+
 " Colorscheme, with post hook to load the colorscheme
-Plug 'https://github.com/freeo/vim-kalisi', { 'do': ':call load_colorscheme#Load()' }
+"Plug 'https://github.com/freeo/vim-kalisi', { 'do': ':call load_colorscheme#Load()' }
 call plug#end()
 
 " UI settings

@@ -1,0 +1,2 @@
+# This gets generated when installing plug
+neovim/autoload/plug.vim

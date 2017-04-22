@@ -15,6 +15,7 @@ $ bash install.sh
 
 ## To Implement
   - Tmux
+  - Iterm color settings
   - Git configuration
   - Ag
   - Non mac os support

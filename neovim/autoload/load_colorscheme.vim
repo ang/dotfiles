@@ -1,3 +1,4 @@
+" Custom function
 " Load colorscheme if it exists, catch and ignore error if scheme doesn't exist
 function load_colorscheme#Load()
   try
