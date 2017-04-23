@@ -8,6 +8,8 @@ To install clone the repository and run:
 $ bash install.sh
 ```
 
+To set up iterm settings open up iterm preferences, go to General > Preferences > "Load preferences from a custom folder or url" and select the iterm2 folder.
+
 ## Currently set up
   - Install script
   - Zsh
@@ -15,7 +17,8 @@ $ bash install.sh
 
 ## To Implement
   - Tmux
-  - Iterm color settings
+  - Set up proper colors for Zsh
+  - Iterm automatic profile set up
   - Git configuration
   - Ag
   - Non mac os support
