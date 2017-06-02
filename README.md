@@ -16,7 +16,6 @@ To set up iterm settings open up iterm preferences, go to General > Preferences 
   - Neovim
 
 ## To Implement
-  - Tmux
   - Set up proper colors for Zsh
   - Iterm automatic profile set up
   - Git configuration

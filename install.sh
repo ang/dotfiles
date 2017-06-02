@@ -37,6 +37,8 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 # Install ag, the silver searcher
 brew install ag
 
+brew install tmux
+
 # TODO Backup files before symlinking, you can't symlink files if they already
 # exist.
 # Symlink configuration files
@@ -44,3 +46,4 @@ ln -s "$DOTFILES_DIR"/zsh/.zshrc ~/.zshrc
 ln -s "$DOTFILES_DIR"/neovim/init.vim ~/.config/nvim/init.vim
 mkdir -p ~/.config/nvim/autoload/
 ln -s "$DOTFILES_DIR"/neovim/autoload/* ~/.config/nvim/autoload/
+ln -s "$DOTFILES_DIR"/tmux/.tmux.conf ~/.tmux.conf
