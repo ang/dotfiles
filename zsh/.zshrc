@@ -1,6 +1,8 @@
 eval "$(rbenv init -)"
 
+# Aliases
 alias tmux="TERM=screen-256color-bce tmux"
+alias ag='ag --pager="less -R"'
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
