@@ -62,3 +62,7 @@ inoremap jj <Esc>
 autocmd FileType gitcommit set textwidth=72
 " For git commit messages, set spell checker
 autocmd FileType gitcommit set spell
+
+" Neovim only
+" Incremental ("live") substitute
+set inccommand=split
