@@ -11,7 +11,7 @@ export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 
 # Enable reverse search
-bindkey -v
+bindkey -e
 bindkey '^R' history-incremental-search-backward
 
 # Git Stuff
