@@ -15,11 +15,17 @@ endif
 
 " Load plugins
 call plug#begin('~/.config/nvim/plugins')
-Plug 'https://github.com/ctrlpvim/ctrlp.vim'  " Fuzzy file finder
-Plug 'https://github.com/tpope/vim-fugitive'  " Git wrapper
+" Plug 'https://github.com/ctrlpvim/ctrlp.vim'      " Fuzzy file finder
+Plug 'https://github.com/tpope/vim-fugitive'      " Git wrapper
+" Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+" Plug 'https://github.com/vim-airline/vim-airline-themes'
+Plug 'https://github.com/w0rp/ale'                " Async linter
 
 " TODO do something special to auto load this stuff
 Plug 'https://github.com/jelera/vim-javascript-syntax', { 'for': 'javascript' }
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Colorscheme, with post hook to load the colorscheme
 "Plug 'https://github.com/freeo/vim-kalisi', { 'do': ':call load_colorscheme#Load()' }
@@ -66,3 +72,9 @@ autocmd FileType gitcommit set spell
 " Neovim only
 " Incremental ("live") substitute
 set inccommand=split
+
+" Ale config
+let g:ale_ruby_rubocop_executable = 'bundle exec rubocop'
+
+" Map space to file finder
+map <Space> :Files<Enter>
