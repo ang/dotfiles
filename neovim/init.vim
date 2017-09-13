@@ -15,20 +15,13 @@ endif
 
 " Load plugins
 call plug#begin('~/.config/nvim/plugins')
-" Plug 'https://github.com/ctrlpvim/ctrlp.vim'      " Fuzzy file finder
-Plug 'https://github.com/tpope/vim-fugitive'      " Git wrapper
-" Plug 'https://github.com/vim-airline/vim-airline' " Status bar
-" Plug 'https://github.com/vim-airline/vim-airline-themes'
-Plug 'https://github.com/w0rp/ale'                " Async linter
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Fuzzy file finder
+Plug 'junegunn/fzf.vim'                                              " Fuzzy file finder
+Plug 'https://github.com/tpope/vim-fugitive'                         " Git wrapper
+Plug 'https://github.com/w0rp/ale'                                   " Async linter
 
 " TODO do something special to auto load this stuff
 Plug 'https://github.com/jelera/vim-javascript-syntax', { 'for': 'javascript' }
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-" Colorscheme, with post hook to load the colorscheme
-"Plug 'https://github.com/freeo/vim-kalisi', { 'do': ':call load_colorscheme#Load()' }
 call plug#end()
 
 " UI settings
@@ -57,10 +50,6 @@ set splitright " When doing :vsplit, split screen to the right
 
 autocmd BufWritePre * :%s/\s\+$//e " Automatically remove trailing spaces
 
-" Plugin specific settings
-" For ctrl p, ignore these files
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-
 " Map jj to esc when in insert mode
 inoremap jj <Esc>
 
@@ -76,5 +65,5 @@ set inccommand=split
 " Ale config
 let g:ale_ruby_rubocop_executable = 'bundle exec rubocop'
 
-" Map space to file finder
+" Map space to fzf's file finder
 map <Space> :Files<Enter>
