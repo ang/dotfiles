@@ -2,7 +2,11 @@ eval "$(rbenv init -)"
 
 # Aliases
 alias tmux="TERM=screen-256color-bce tmux"
+alias be="bundle exec"
 alias ag='ag --pager="less -R"'
+alias '..'='cd ..'
+alias '...'='cd ../..'
+alias '....'='cd ../../..'
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
@@ -39,3 +43,11 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
+
+# Have mysql 5.6 linked to the path
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+
+# Make the delete key delete a character instead of sending a tilde
+bindkey "^[[3~" delete-char
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
