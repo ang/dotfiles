@@ -1,5 +1,3 @@
-eval "$(rbenv init -)"
-
 # Aliases
 alias tmux="TERM=screen-256color-bce tmux"
 alias be="bundle exec"
@@ -7,6 +5,7 @@ alias ag='ag --pager="less -R"'
 alias '..'='cd ..'
 alias '...'='cd ../..'
 alias '....'='cd ../../..'
+alias ls='ls -G' # Colorizes output
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
