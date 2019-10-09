@@ -8,17 +8,18 @@ To install clone the repository and run:
 $ bash install.sh
 ```
 
-To set up iterm settings open up iterm preferences, go to General > Preferences > "Load preferences from a custom folder or url" and select the iterm2 folder.
+iTerm setup (manual):
+1. iTerm settings: Open up iterm settings then go to General > Preferences > "Load preferences from a custom folder or url" and select the iterm2 folder.
+1. iTerm colors: Open up iterm settings then go to Profiles > Colors > Color Presets
 
 ## Currently set up
   - Install script
   - Zsh
   - Neovim
+  - Tmux
 
 ## To Implement
-  - Set up proper colors for Zsh
   - Iterm automatic profile set up
   - Git configuration
-  - Ag
   - Non mac os support
   - Add file backup before symlinking in install script
