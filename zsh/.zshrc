@@ -57,4 +57,16 @@ export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 # Make the delete key delete a character instead of sending a tilde
 bindkey "^[[3~" delete-char
 
+# Sending rg to a pager.
+# See https://github.com/BurntSushi/ripgrep/issues/86#issuecomment-425744884
+rg() {
+  # If outputting (fd 1 = stdout) directly to a terminal, page automatically:
+  if [ -t 1 ]; then
+    command rg -p "$@" \
+      | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --LONG-PROMPT
+  else
+    command rg "$@"
+  fi
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
