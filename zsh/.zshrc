@@ -12,6 +12,15 @@ export EDITOR="$VISUAL"
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 
+# Init for pyenv and rbenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv-init > /dev/null; then
+	eval "$(pyenv virtualenv-init -)";
+fi
+
+# Rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 # Enable reverse search
 bindkey -e
 bindkey '^R' history-incremental-search-backward
