@@ -19,6 +19,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Fuzzy fil
 Plug 'junegunn/fzf.vim'                                              " Fuzzy file finder
 Plug 'https://github.com/tpope/vim-fugitive'                         " Git wrapper
 Plug 'https://github.com/w0rp/ale'                                   " Async linter
+Plug 'https://github.com/altercation/vim-colors-solarized'
 
 " TODO do something special to auto load this stuff
 Plug 'https://github.com/jelera/vim-javascript-syntax', { 'for': 'javascript' }
@@ -38,6 +39,11 @@ set cursorline                  " Highlight currently focused line
 set expandtab                   " Use spaces instead of tabs
 set tabstop=2                   " Indicates how many spaces in a tab
 set shiftwidth=2                " Indicates number of spaces for autoindent
+
+" Netrw (file browser) configs
+" https://shapeshed.com/vim-netrw/ Also when in netrw, can use F1 to see help options
+let g:netrw_liststyle=3 " Set view to tree style
+let g:netrw_banner=0    " Remove the banner
 
 " Other settings
 set mouse=a    " Add mouse support
