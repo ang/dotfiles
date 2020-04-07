@@ -12,6 +12,8 @@ export EDITOR="$VISUAL"
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 
+export FZF_DEFAULT_COMMAND='rg --files'
+
 # Init for pyenv and rbenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then
@@ -36,9 +38,11 @@ autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-zstyle ':vcs_info:git:*' formats '<%b>: '
+zstyle ':vcs_info:git:*' formats '<%b> '
 
-PROMPT='[%*] %n %(4~|../%3~|%~) '\$vcs_info_msg_0_
+# See this for setting newline if prompt is too long https://unix.stackexchange.com/a/537248
+NEWLINE=$'\n'
+PROMPT='[%*] %n %(4~|../%3~|%~) '\$vcs_info_msg_0_'%-30(l::${NEWLINE}> )'
 
 # Will ignore duplicates when going up in history
 setopt histignoredups
@@ -63,7 +67,7 @@ rg() {
   # If outputting (fd 1 = stdout) directly to a terminal, page automatically:
   if [ -t 1 ]; then
     command rg -p "$@" \
-      | less --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --LONG-PROMPT
+      | less --no-init --RAW-CONTROL-CHARS --LONG-PROMPT
   else
     command rg "$@"
   fi
