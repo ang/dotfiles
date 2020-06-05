@@ -20,6 +20,7 @@ Plug 'junegunn/fzf.vim'                                              " Fuzzy fil
 Plug 'https://github.com/tpope/vim-fugitive'                         " Git wrapper
 Plug 'https://github.com/w0rp/ale'                                   " Async linter
 Plug 'https://github.com/altercation/vim-colors-solarized'
+Plug 'https://github.com/ludovicchabant/vim-gutentags.git'
 
 " TODO do something special to auto load this stuff
 Plug 'https://github.com/jelera/vim-javascript-syntax', { 'for': 'javascript' }
@@ -73,3 +74,5 @@ let g:ale_ruby_rubocop_executable = 'bundle exec rubocop'
 
 " Map space to fzf's file finder
 map <Space> :Files<Enter>
+
+let g:gutentags_cache_dir="~/.cache/tags"
