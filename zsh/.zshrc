@@ -1,3 +1,8 @@
+autoload -Uz compinit && compinit
+
+# Load work specific configs
+source ~/.cloverrc
+
 # Aliases
 alias tmux="TERM=screen-256color-bce tmux"
 alias be="bundle exec"
@@ -11,17 +16,23 @@ export EDITOR="$VISUAL"
 
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
+export GOPATH=$(go env GOPATH)
+export PATH=$PATH:$(go env GOPATH)/bin
 
 export FZF_DEFAULT_COMMAND='rg --files'
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 # Init for pyenv and rbenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-if which pyenv-virtualenv-init > /dev/null; then
-	eval "$(pyenv virtualenv-init -)";
+if which pyenv > /dev/null; then
+  # eval "$(pyenv init - )";
+  # eval "$(pyenv virtualenv-init - )"
+  eval "$(pyenv init --path --no-rehash - zsh)";
+  eval "$(pyenv virtualenv-init - zsh)"
 fi
 
 # Rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Enable reverse search
 bindkey -e
@@ -56,7 +67,7 @@ bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
 # Have mysql 5.6 linked to the path
-export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+# export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
 # Make the delete key delete a character instead of sending a tilde
 bindkey "^[[3~" delete-char
@@ -74,3 +85,11 @@ rg() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export HISTFILE=~/.zsh_history # File to save history to
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+
+setopt HIST_FIND_NO_DUPS # Skip duplicates when going up and down history
+setopt INC_APPEND_HISTORY # Immediately append history to file
+setopt EXTENDED_HISTORY # Add timestamp to history in file
