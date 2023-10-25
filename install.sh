@@ -18,7 +18,7 @@ if [ "$(uname)" != "Darwin" ]; then # Darwin is the name of the OS!
 fi
 
 # Install homebrew, see https://brew.sh/
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install zsh
 brew install zsh
@@ -29,7 +29,7 @@ chsh -s $ZSH_SHELL
 
 # Install neovim
 brew tap neovim/neovim
-brew install neovim/neovim/neovim
+brew install neovim
 # Install vim-plug, vim plugin manager
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -38,11 +38,13 @@ brew install ripgrep
 
 brew install tmux
 
-# TODO Backup files before symlinking, you can't symlink files if they already
-# exist.
+brew install tldr
+
 # Symlink configuration files
-ln -s "$DOTFILES_DIR"/zsh/.zshrc ~/.zshrc
-ln -s "$DOTFILES_DIR"/neovim/init.vim ~/.config/nvim/init.vim
+ln -sf "$DOTFILES_DIR"/zsh/.zshrc ~/.zshrc
+# Create this directory first if it doesn't exist
+mkdir -p ~/.config/nvim
+ln -sf "$DOTFILES_DIR"/neovim/init.vim ~/.config/nvim/init.vim
 mkdir -p ~/.config/nvim/autoload/
-ln -s "$DOTFILES_DIR"/neovim/autoload/* ~/.config/nvim/autoload/
-ln -s "$DOTFILES_DIR"/tmux/.tmux.conf ~/.tmux.conf
+ln -sf "$DOTFILES_DIR"/neovim/autoload/* ~/.config/nvim/autoload/
+ln -sf "$DOTFILES_DIR"/tmux/.tmux.conf ~/.tmux.conf

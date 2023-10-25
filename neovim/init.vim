@@ -19,9 +19,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Fuzzy fil
 Plug 'junegunn/fzf.vim'                                              " Fuzzy file finder
 Plug 'https://github.com/tpope/vim-fugitive'                         " Git wrapper
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'https://github.com/altercation/vim-colors-solarized'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+" Plug 'https://github.com/altercation/vim-colors-solarized'
 
-" TODO do something special to auto load this stuff
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -41,7 +41,7 @@ let g:python3_host_prog = '/Users/ang/pynvim'
 " UI settings
 syntax on                       " Enable syntax highlighting
 set number                      " Show line numbers
-call load_colorscheme#Load()    " Load colorscheme
+colorscheme catppuccin-frappe
 
 set textwidth=0                " Autowrap text that goes beyond indicated limit
 set colorcolumn=+1              " Show textwidth limit bar

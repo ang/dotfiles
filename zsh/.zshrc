@@ -16,8 +16,6 @@ export EDITOR="$VISUAL"
 
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
-export GOPATH=$(go env GOPATH)
-export PATH=$PATH:$(go env GOPATH)/bin
 
 export FZF_DEFAULT_COMMAND='rg --files'
 
@@ -66,9 +64,6 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
-# Have mysql 5.6 linked to the path
-# export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
-
 # Make the delete key delete a character instead of sending a tilde
 bindkey "^[[3~" delete-char
 
@@ -93,3 +88,9 @@ export HISTSIZE=1000000000
 setopt HIST_FIND_NO_DUPS # Skip duplicates when going up and down history
 setopt INC_APPEND_HISTORY # Immediately append history to file
 setopt EXTENDED_HISTORY # Add timestamp to history in file
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/alexng/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alexng/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/alexng/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alexng/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
