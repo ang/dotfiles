@@ -17,26 +17,15 @@ endif
 call plug#begin('~/.config/nvim/plugins')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }    " Fuzzy file finder
 Plug 'junegunn/fzf.vim'                                              " Fuzzy file finder
-Plug 'https://github.com/tpope/vim-fugitive'                         " Git wrapper
+Plug 'tpope/vim-fugitive'                                            " Git wrapper
+Plug 'tpope/vim-rhubarb'                                             " Enables GBrowse for fugitive
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-" Plug 'https://github.com/altercation/vim-colors-solarized'
 
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 call plug#end()
-
-" https://www.reddit.com/r/neovim/comments/r9acxp/neovim_is_slow_because_of_python_provider/
-" https://neovim.io/doc/user/provider.html#provider-python
-" Neovim tries to loads a python provider 'pythonx'. This allows users to
-" write plugins using python.
-" I don't think any of my plugins use python, but because I open a python
-" file, it tries to load the python provider.
-" What I've done here is I've created a virtualenv containing the `pynvim`
-" package, which is what nvim uses. We'll point to this virtualenv so when
-" loading python files it won't be slow.
-let g:python3_host_prog = '/Users/ang/pynvim'
 
 " UI settings
 syntax on                       " Enable syntax highlighting

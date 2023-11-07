@@ -88,9 +88,3 @@ export HISTSIZE=1000000000
 setopt HIST_FIND_NO_DUPS # Skip duplicates when going up and down history
 setopt INC_APPEND_HISTORY # Immediately append history to file
 setopt EXTENDED_HISTORY # Add timestamp to history in file
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/alexng/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alexng/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/alexng/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alexng/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
