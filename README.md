@@ -9,8 +9,7 @@ $ bash install.sh
 ```
 
 iTerm setup (manual):
-1. iTerm settings: Open up iterm settings then go to General > Preferences > "Load preferences from a custom folder or url" and select the iterm2 folder.
-1. iTerm colors: Open up iterm settings then go to Profiles > Colors > Color Presets
+1. iTerm settings: Open up iterm settings then go to General > Settings > "Load preferences from a custom folder or url" and select the iterm2 folder.
 
 ## Currently set up
   - Install script
