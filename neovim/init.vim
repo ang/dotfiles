@@ -25,6 +25,8 @@ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 " UI settings
@@ -72,6 +74,21 @@ autocmd FileType gitcommit set spell
 " Neovim only
 " Incremental ("live") substitute
 set inccommand=split
+
+" Tree-sitter
+" TODO: Extra to a separate lua file
+" TODO: When comfortable with tree sitter, remove typescript, js, tsx plugins
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "python", "typescript", "tsx", "javascript" },
+
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+}
+EOF
+
 
 """"""""""""""" Extension Configurations """""""""""""""
 " fzf
