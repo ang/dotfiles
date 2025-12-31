@@ -22,10 +22,6 @@ Plug 'tpope/vim-rhubarb'                                             " Enables G
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
@@ -79,7 +75,7 @@ set inccommand=split
 " TODO: Extra to a separate lua file
 " TODO: When comfortable with tree sitter, remove typescript, js, tsx plugins
 lua << EOF
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter'.setup {
   ensure_installed = { "python", "typescript", "tsx", "javascript" },
 
   highlight = {

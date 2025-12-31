@@ -1,4 +1,14 @@
-autoload -Uz compinit && compinit
+# Profiling
+zmodload zsh/zprof
+
+# Smarter completion initialization
+# https://scottspence.com/posts/speeding-up-my-zsh-shell
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+    compinit
+else
+    compinit -C
+fi
 
 # Load work specific configs
 source ~/.cloverrc
@@ -17,16 +27,13 @@ export EDITOR="$VISUAL"
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 
-export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-# Init for pyenv and rbenv
 if which pyenv > /dev/null; then
-  # eval "$(pyenv init - )";
-  # eval "$(pyenv virtualenv-init - )"
   eval "$(pyenv init --path --no-rehash - zsh)";
-  eval "$(pyenv virtualenv-init - zsh)"
+  eval "$(pyenv virtualenv-init --no-rehash - zsh)"
 fi
 
 # Rbenv
@@ -42,16 +49,29 @@ bindkey '^R' history-incremental-search-backward
 # Enable Git auto complete
 autoload -Uz compinit && compinit
 
+# vcs_info was slow on my machine for whatever reason, now just using precmd_git_branch
 # Git prompt stuff to display branch
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
+# autoload -Uz vcs_info
+# precmd_vcs_info() { vcs_info }
+# precmd_functions+=( precmd_vcs_info )
+# setopt prompt_subst
+# zstyle ':vcs_info:*' check-for-changes false
+# zstyle ':vcs_info:git:*' formats '<%b> '
+
+precmd_git_branch() {
+     local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+     if [[ -n $branch ]]; then
+         GIT_PROMPT="<$branch> "
+     else
+         GIT_PROMPT=""
+     fi
+}
+precmd_functions+=( precmd_git_branch )
 setopt prompt_subst
-zstyle ':vcs_info:git:*' formats '<%b> '
 
 # See this for setting newline if prompt is too long https://unix.stackexchange.com/a/537248
 NEWLINE=$'\n'
-PROMPT='[%*] %n %(4~|../%3~|%~) '\$vcs_info_msg_0_'%-30(l::${NEWLINE}> )'
+PROMPT='[%*] %n %(4~|../%3~|%~) ${GIT_PROMPT}%-30(l::${NEWLINE}> )'
 
 # Will ignore duplicates when going up in history
 setopt histignoredups
@@ -88,3 +108,8 @@ export HISTSIZE=1000000000
 setopt HIST_FIND_NO_DUPS # Skip duplicates when going up and down history
 setopt INC_APPEND_HISTORY # Immediately append history to file
 setopt EXTENDED_HISTORY # Add timestamp to history in file
+
+export PATH="/Users/alexng/.local/bin:$PATH"
+
+# Profiling
+zprof
